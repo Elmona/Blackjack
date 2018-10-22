@@ -11,13 +11,17 @@ namespace BlackJack.controller
         private model.Game a_game;
         private view.IView a_view;
 
-        public bool PlayGame(model.Game a_game, view.IView a_view)
+        public PlayGame(model.Game a_game, view.IView a_view)
         {
             this.a_game = a_game;
             this.a_view = a_view;
 
             this.a_game.AddSubscriber(this);
+            a_view.DisplayWelcomeMessage();
+        }
 
+        public bool Play()
+        {
             if (a_game.IsGameOver())
             {
                 a_view.DisplayGameOver(a_game.IsDealerWinner());

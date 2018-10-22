@@ -15,11 +15,12 @@ namespace BlackJack.controller
             this.a_game = a_game;
             this.a_view = a_view;
 
-            this.a_game.addSubsriber(this);
+            this.a_game.AddSubscriber(this);
+            a_view.DisplayWelcomeMessage();
         }
         public bool Play()
         {
-            a_view.DisplayWelcomeMessage();
+            // a_view.DisplayWelcomeMessage();
             
             //a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
             //a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
@@ -49,6 +50,8 @@ namespace BlackJack.controller
 
         public void CardDrawn()
         {
+            // System.Threading.Thread.Sleep(500); Flytta till player
+            a_view.DisplayWelcomeMessage();
             a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
             a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
         }

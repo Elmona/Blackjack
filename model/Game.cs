@@ -15,7 +15,7 @@ namespace BlackJack.model
         {
             m_dealer = new Dealer(new rules.RulesFactory());
             m_player = new Player();
-            this.m_subsribers = new List<model.ICardDrawnObserver>();
+            m_subsribers = new List<model.ICardDrawnObserver>();
         }
 
         public bool IsGameOver()
@@ -30,7 +30,9 @@ namespace BlackJack.model
 
         public bool NewGame()
         {
-            return m_dealer.NewGame(m_player);
+            bool response = m_dealer.NewGame(m_player);
+            NotifyCardDrawn();
+            return response;
         }
 
         public bool Hit()
@@ -66,7 +68,7 @@ namespace BlackJack.model
             return m_player.CalcScore();
         }
 
-        public void addSubsriber(model.ICardDrawnObserver m_subsriber)
+        public void AddSubscriber(model.ICardDrawnObserver m_subsriber)
         {
             m_subsribers.Add(m_subsriber);
         }
@@ -76,13 +78,17 @@ namespace BlackJack.model
             m_subsribers.Remove(m_subsriber);
         }
 
-        public void NotifyCardDrawn()
+        private void NotifyCardDrawn()
         {
             foreach (var subsriber in m_subsribers)
             {
-                System.Console.WriteLine("calling the subs..");
                 subsriber.CardDrawn();
             }
         }
+
+        // public void AddSubscriber(model.ICardDrawnObserver m_subsriber)
+        // {
+        //     this.m_dealer.AddSubscriber(m_subsriber);
+        // }
     }
 }

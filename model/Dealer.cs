@@ -89,5 +89,10 @@ namespace BlackJack.model
             
         }
 
+        // public void AddSubscriber(model.ICardDrawnObserver m_subsriber)
+        // {
+        //     this.m_deck.AddSubsriber(m_subsriber);
+        // }
+
     }
 }

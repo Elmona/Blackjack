@@ -11,7 +11,7 @@ namespace BlackJack.view
 
         public void DisplayWelcomeMessage()
         {
-            // System.Console.Clear();
+            System.Console.Clear();
             System.Console.WriteLine("Hello Black Jack World");
             System.Console.WriteLine("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
         }

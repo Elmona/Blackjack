@@ -17,9 +17,9 @@ namespace BlackJack.controller
 
             this.a_game.AddSubscriber(this);
             a_view.DisplayWelcomeMessage();
-        }
-        public bool Play()
-        {
+
+            a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
+            a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
 
             if (a_game.IsGameOver())
             {
@@ -27,22 +27,26 @@ namespace BlackJack.controller
                 // a_game.NewGame();
             }
 
-            int input = a_view.GetInput();
+            var input = a_view.GetInput();
 
-            if (input == 'p')
+            switch (input)
             {
-                a_game.NewGame();
-            }
-            else if (input == 'h')
-            {
-                a_game.Hit();
-            }
-            else if (input == 's')
-            {
-                a_game.Stand();
+                case view.Event.Play:
+                    a_game.NewGame();
+                    break;
+                case view.Event.Hit:
+                    a_game.Hit();
+                    break;
+                case view.Event.Stand:
+                    a_game.Stand();
+                    break;
+                case view.Event.Quit:
+                    return false;
+                case view.Event.None:
+                    return true;
             }
 
-            return input != 'q';
+            return true;
         }
 
         public void CardDrawn()

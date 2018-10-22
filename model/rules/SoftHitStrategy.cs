@@ -11,7 +11,16 @@ namespace BlackJack.model.rules
 
         public bool DoHit(model.Player a_dealer)
         {
-            return a_dealer.CalcScore() < g_hitLimit;
+            int score = a_dealer.CalcScore();
+
+            if (score > g_hitLimit && score < 22) 
+            {
+                Console.WriteLine("Våran superkod körs..");
+                return false;
+            }
+
+            return score < g_hitLimit;
         }
+
     }
 }

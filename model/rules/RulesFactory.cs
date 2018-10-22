@@ -9,7 +9,8 @@ namespace BlackJack.model.rules
     {
         public IHitStrategy GetHitRule()
         {
-            return new BasicHitStrategy();
+            // return new BasicHitStrategy();
+            return new SoftHitStrategy();
         }
 
         public INewGameStrategy GetNewGameRule()

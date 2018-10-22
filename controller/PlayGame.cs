@@ -24,6 +24,7 @@ namespace BlackJack.controller
             if (a_game.IsGameOver())
             {
                 a_view.DisplayGameOver(a_game.IsDealerWinner());
+                // a_game.NewGame();
             }
 
             int input = a_view.GetInput();

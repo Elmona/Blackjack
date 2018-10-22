@@ -31,14 +31,12 @@ namespace BlackJack.model
         public bool NewGame()
         {
             bool response = m_dealer.NewGame(m_player);
-            NotifyCardDrawn();
             return response;
         }
 
         public bool Hit()
         {
             bool response = m_dealer.Hit(m_player);
-            NotifyCardDrawn();
             return response;
         }
 
@@ -70,25 +68,9 @@ namespace BlackJack.model
 
         public void AddSubscriber(model.ICardDrawnObserver m_subsriber)
         {
-            m_subsribers.Add(m_subsriber);
+            this.m_dealer.AddSubscriber(m_subsriber);
+            this.m_player.AddSubscriber(m_subsriber);
         }
 
-        public void RemoveSubsriber(model.ICardDrawnObserver m_subsriber)
-        {
-            m_subsribers.Remove(m_subsriber);
-        }
-
-        private void NotifyCardDrawn()
-        {
-            foreach (var subsriber in m_subsribers)
-            {
-                subsriber.CardDrawn();
-            }
-        }
-
-        // public void AddSubscriber(model.ICardDrawnObserver m_subsriber)
-        // {
-        //     this.m_dealer.AddSubscriber(m_subsriber);
-        // }
     }
 }

@@ -67,5 +67,26 @@ namespace BlackJack.model
             }
             return false;
         }
+
+        public bool Stand()
+        {
+            if (m_deck != null)
+            {
+                this.ShowHand();
+                
+                while(m_hitRule.DoHit(this))
+                {
+                    BlackJack.model.Card c = m_deck.GetCard();
+                    c.Show(true);
+                    DealCard(c);
+                }
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+            
+        }
     }
 }

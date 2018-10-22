@@ -88,5 +88,6 @@ namespace BlackJack.model
             }
             
         }
+
     }
 }

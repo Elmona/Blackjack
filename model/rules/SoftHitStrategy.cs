@@ -15,7 +15,6 @@ namespace BlackJack.model.rules
 
             if (score > g_hitLimit && score < 22) 
             {
-                Console.WriteLine("Våran superkod körs..");
                 return false;
             }
 

@@ -8,10 +8,18 @@ namespace BlackJack.model
     class Player
     {
         private List<Card> m_hand = new List<Card>();
+        private List<model.ICardDrawnObserver> m_subsribers;
+
+        public Player()
+        {
+            m_subsribers = new List<model.ICardDrawnObserver>();
+        }
 
         public void DealCard(Card a_card)
         {
+            System.Threading.Thread.Sleep(1000);
             m_hand.Add(a_card);
+            NotifyCardDrawn();
         }
 
         public IEnumerable<Card> GetHand()
@@ -57,6 +65,24 @@ namespace BlackJack.model
             }
 
             return score;
+        }
+
+        public void AddSubscriber(model.ICardDrawnObserver m_subsriber)
+        {
+            m_subsribers.Add(m_subsriber);
+        }
+
+        public void RemoveSubsriber(model.ICardDrawnObserver m_subsriber)
+        {
+            m_subsribers.Remove(m_subsriber);
+        }
+
+        private void NotifyCardDrawn()
+        {
+            foreach (var subsriber in m_subsribers)
+            {
+                subsriber.CardDrawn();
+            }
         }
     }
 }

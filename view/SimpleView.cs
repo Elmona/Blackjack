@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BlackJack.model;
 
 namespace BlackJack.view
 {
@@ -59,5 +60,6 @@ namespace BlackJack.view
             }
             
         }
+
     }
 }

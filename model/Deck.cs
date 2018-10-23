@@ -8,12 +8,10 @@ namespace BlackJack.model
     class Deck
     {
         List<Card> m_cards;
-        private List<model.ICardDrawnObserver> m_subsribers;
 
         public Deck()
         {
             m_cards = new List<Card>();
-            m_subsribers = new List<model.ICardDrawnObserver>();
 
             for (int colorIx = 0; colorIx < (int)Card.Color.Count; colorIx++)
             {

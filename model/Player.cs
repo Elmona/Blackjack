@@ -8,11 +8,11 @@ namespace BlackJack.model
     class Player
     {
         private List<Card> m_hand = new List<Card>();
-        private List<model.ICardDrawnObserver> m_subsribers;
+        private List<model.ICardDrawnObserver> m_subscribers;
 
         public Player()
         {
-            m_subsribers = new List<model.ICardDrawnObserver>();
+            m_subscribers = new List<model.ICardDrawnObserver>();
         }
 
         public void DealCard(Card a_card)
@@ -46,7 +46,8 @@ namespace BlackJack.model
                 {2, 3, 4, 5, 6, 7, 8, 9, 10, 10 ,10 ,10, 11};
             int score = 0;
 
-            foreach(Card c in GetHand()) {
+            foreach (Card c in GetHand())
+            {
                 if (c.GetValue() != Card.Value.Hidden)
                 {
                     score += cardScores[(int)c.GetValue()];
@@ -67,21 +68,21 @@ namespace BlackJack.model
             return score;
         }
 
-        public void AddSubscriber(model.ICardDrawnObserver m_subsriber)
+        public void AddSubscriber(model.ICardDrawnObserver m_subscriber)
         {
-            m_subsribers.Add(m_subsriber);
+            m_subscribers.Add(m_subscriber);
         }
 
-        public void RemoveSubsriber(model.ICardDrawnObserver m_subsriber)
+        public void RemoveSubsriber(model.ICardDrawnObserver m_subscriber)
         {
-            m_subsribers.Remove(m_subsriber);
+            m_subscribers.Remove(m_subscriber);
         }
 
-        private void NotifyCardDrawn()
+        public void NotifyCardDrawn()
         {
-            foreach (var subsriber in m_subsribers)
+            foreach (var subscriber in m_subscribers)
             {
-                subsriber.CardDrawn();
+                subscriber.CardDrawn();
             }
         }
     }

@@ -9,13 +9,13 @@ namespace BlackJack.model
     {
         private model.Dealer m_dealer;
         private model.Player m_player;
-        private List<model.ICardDrawnObserver> m_subsribers;
+        private List<model.ICardDrawnObserver> m_subscribers;
 
         public Game()
         {
             m_dealer = new Dealer(new rules.RulesFactory());
             m_player = new Player();
-            m_subsribers = new List<model.ICardDrawnObserver>();
+            m_subscribers = new List<model.ICardDrawnObserver>();
         }
 
         public bool IsGameOver()
@@ -42,8 +42,6 @@ namespace BlackJack.model
 
         public bool Stand()
         {
-            // m_dealer.Stand();
-            // return true;
             return m_dealer.Stand();
         }
 
@@ -67,10 +65,10 @@ namespace BlackJack.model
             return m_player.CalcScore();
         }
 
-        public void AddSubscriber(model.ICardDrawnObserver m_subsriber)
+        public void AddSubscriber(model.ICardDrawnObserver m_subscriber)
         {
-            this.m_dealer.AddSubscriber(m_subsriber);
-            this.m_player.AddSubscriber(m_subsriber);
+            this.m_dealer.AddSubscriber(m_subscriber);
+            this.m_player.AddSubscriber(m_subscriber);
         }
 
     }

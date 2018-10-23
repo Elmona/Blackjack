@@ -27,7 +27,7 @@ namespace BlackJack.model
                 m_deck = new Deck();
                 ClearHand();
                 a_player.ClearHand();
-                return m_newGameRule.NewGame(m_deck, this, a_player);   
+                return m_newGameRule.NewGame(m_deck, this, a_player);
             }
             return false;
         }
@@ -63,6 +63,8 @@ namespace BlackJack.model
         {
             if (m_deck != null && /*CalcScore() >= g_hitLimit*/ m_hitRule.DoHit(this) != true)
             {
+                ShowHand();
+                NotifyCardDrawn();
                 return true;
             }
             return false;
@@ -73,8 +75,8 @@ namespace BlackJack.model
             if (m_deck != null)
             {
                 this.ShowHand();
-                
-                while(m_hitRule.DoHit(this))
+
+                while (m_hitRule.DoHit(this))
                 {
                     BlackJack.model.Card c = m_deck.GetCard();
                     c.Show(true);
@@ -82,11 +84,11 @@ namespace BlackJack.model
                 }
                 return true;
             }
-            else 
+            else
             {
                 return false;
             }
-            
+
         }
 
     }

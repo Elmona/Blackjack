@@ -77,8 +77,8 @@ namespace BlackJack.model
             if (m_deck != null && /*CalcScore() >= g_hitLimit*/ m_hitRule.DoHit(this) != true)
             {
                 // TODO: Can we add the pause here to?
-                ShowHand();
-                NotifyCardDrawn();
+                // NotifyCardDrawn();
+                ShowHand(); 
                 return true;
             }
             return false;

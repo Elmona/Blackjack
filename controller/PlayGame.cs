@@ -24,8 +24,8 @@ namespace BlackJack.controller
         {
             if (a_game.IsGameOver())
             {
+                CardDrawn();
                 a_view.DisplayGameOver(a_game.IsDealerWinner());
-                a_view.DisplayWelcomeMessage();
             }
 
             var input = a_view.GetInput();
@@ -52,7 +52,7 @@ namespace BlackJack.controller
 
         public void CardDrawn()
         {
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(500);
             a_view.DisplayWelcomeMessage();
             a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
             a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());

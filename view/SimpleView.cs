@@ -66,8 +66,7 @@ namespace BlackJack.view
             {
                 System.Console.WriteLine("You Won!");
             }
-            Console.WriteLine("Press any key to continue.");
-            Console.ReadKey();
+            Console.WriteLine("Game over, press 'p' to play another game or 'q' to quit");
         }
 
     }

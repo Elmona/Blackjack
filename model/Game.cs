@@ -18,7 +18,7 @@ namespace BlackJack.model
 
         public bool IsGameOver()
         {
-            return m_dealer.IsGameOver();
+            return m_dealer.IsGameOver(m_player);
         }
 
         public bool IsDealerWinner()
@@ -35,6 +35,7 @@ namespace BlackJack.model
         public bool Hit()
         {
             bool response = m_dealer.Hit(m_player);
+
             return response;
         }
 

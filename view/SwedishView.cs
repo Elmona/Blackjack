@@ -61,6 +61,7 @@ namespace BlackJack.view
             {
                 System.Console.WriteLine("Du vann!");
             }
+            System.Console.WriteLine("Spelet är slut: tryck 'p' för att spela igen eller 'q' för att avsluta");
         }
 
         private void DisplayHand(String a_name, IEnumerable<model.Card> a_hand, int a_score)

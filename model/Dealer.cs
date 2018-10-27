@@ -40,10 +40,8 @@ namespace BlackJack.model
         {
             if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver(a_player))
             {
-                Card c;
-                c = m_deck.GetCard();
-                c.Show(true);
-                a_player.DealCard(c);
+                Card c = m_deck.GetCard();
+                a_player.insertCard(c);
 
                 return true;
             }
@@ -91,8 +89,7 @@ namespace BlackJack.model
                 while (m_hitRule.DoHit(this))
                 {
                     BlackJack.model.Card c = m_deck.GetCard();
-                    c.Show(true);
-                    DealCard(c);
+                    this.insertCard(c);
                 }
                 return true;
             }

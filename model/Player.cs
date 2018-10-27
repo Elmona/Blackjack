@@ -84,5 +84,11 @@ namespace BlackJack.model
                 subscriber.CardDrawn();
             }
         }
+
+        public void insertCard(model.Card card)
+        {
+            card.Show(true);
+            this.DealCard(card);
+        }
     }
 }

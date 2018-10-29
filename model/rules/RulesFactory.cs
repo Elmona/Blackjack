@@ -15,7 +15,7 @@ namespace BlackJack.model.rules
 
         public INewGameStrategy GetNewGameRule()
         {
-            // return new AmericanNewGameStrategy();
+            //return new AmericanNewGameStrategy();
             return new InternationalNewGameStrategy();
         }
 

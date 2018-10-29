@@ -19,7 +19,10 @@ namespace BlackJack.model.rules
 
             foreach (Card c in a_dealer.GetHand())
             {
-                dealerScoreAceNotLowered += cardScores[(int)c.GetValue()];
+                if (c.GetValue() != Card.Value.Hidden)
+                {
+                    dealerScoreAceNotLowered += cardScores[(int)c.GetValue()];
+                }
 
                 if (dealerScoreAceNotLowered == 17 && c.GetValue() == Card.Value.Ace)
                 {

@@ -12,18 +12,22 @@ namespace BlackJack.model.rules
 
         public bool DoHit(model.Player a_dealer)
         {
-            int score = a_dealer.CalcScore();
+            int dealerScoreAceLowered = a_dealer.CalcScore();
+            int dealerScoreAceNotLowered = 0;
+            int[] cardScores = new int[(int)model.Card.Value.Count]
+               {2, 3, 4, 5, 6, 7, 8, 9, 10, 10 ,10 ,10, 11};
 
             foreach (Card c in a_dealer.GetHand())
             {
+                dealerScoreAceNotLowered += cardScores[(int)c.GetValue()];
 
-                if (score == 17 && c.GetValue() == Card.Value.Ace)
+                if (dealerScoreAceNotLowered == 17 && c.GetValue() == Card.Value.Ace)
                 {
-                    return score < g_softHitLimit;
+                    return dealerScoreAceNotLowered < g_softHitLimit;
                 }
             }
 
-            return score < g_hardHitLimit;
+            return dealerScoreAceLowered < g_hardHitLimit;
         }
 
     }

@@ -5,16 +5,16 @@ using System.Text;
 
 namespace BlackJack.model.rules
 {
-    class AmericanNewGameStrategy : NewGameStrategy
+  class AmericanNewGameStrategy : INewGameStrategy
+  {
+    public bool NewGame(Dealer a_dealer, Player a_player)
     {
-        public override bool NewGame(Deck a_deck, Dealer a_dealer, Player a_player)
-        {
-            AddCard(a_deck.GetCard(), a_player, true);
-            AddCard(a_deck.GetCard(), a_dealer, true);
-            AddCard(a_deck.GetCard(), a_player, true);
-            AddCard(a_deck.GetCard(), a_dealer, false);
+      a_dealer.Hit(a_player);
+      a_dealer.Hit(a_dealer);
+      a_dealer.Hit(a_player);
+      a_dealer.Hit(a_dealer, false);
 
-            return true;
-        }
+      return true;
     }
+  }
 }
